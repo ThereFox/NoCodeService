@@ -7,4 +7,8 @@
         <RootNamespace>NoCodeConstructor.Domain</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Engine\Engine\" />
+    </ItemGroup>
+
 </Project>

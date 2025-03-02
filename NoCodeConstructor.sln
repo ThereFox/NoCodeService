@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Domain", "NoCodeConstructor.Domain\NoCodeConstructor.Domain.csproj", "{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Domain.Engine", "NoCodeConstructor.Domain.Engine\NoCodeConstructor.Domain.Engine.csproj", "{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Persistense", "NoCodeConstructor.Persistense\NoCodeConstructor.Persistense.csproj", "{83FB54FC-1E5B-4157-AE3B-F8D54490840F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FB54FC-1E5B-4157-AE3B-F8D54490840F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FB54FC-1E5B-4157-AE3B-F8D54490840F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FB54FC-1E5B-4157-AE3B-F8D54490840F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FB54FC-1E5B-4157-AE3B-F8D54490840F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
