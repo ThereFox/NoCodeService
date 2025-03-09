@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>NoCodeConstructor.Domain</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CSharpFunctionalExtensions" Version="3.5.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj" />
+      <ProjectReference Include="..\NoCodeConstructor.Domain\NoCodeConstructor.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
