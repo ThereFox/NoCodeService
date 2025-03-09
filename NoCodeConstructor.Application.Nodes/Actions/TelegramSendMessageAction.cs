@@ -22,13 +22,13 @@ public class TelegramSendMessageAction : INodeAction
     {
         var request = new HttpRequestMessage(
             HttpMethod.Post,
-            $"https://api.telegram.org/bot{_telegramConfig.BotToken}6915878881:AAG2pDZnsMXYa2sIlsru2R3Dv6MrZ5fr16s/sendMessage"
+            $"https://api.telegram.org/bot{_telegramConfig.BotToken}/sendMessage"
             );
 
         request.Content = JsonContent.Create(
                 new
                 {
-                    text = $"\"{_telegramConfig.Content}\"",
+                    text = _telegramConfig.Content,
                     parse_mode = "MarkdownV2",
                     chat_id = _telegramConfig.ChatId
                 }
