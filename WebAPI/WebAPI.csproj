@@ -14,10 +14,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\NoCode.Application\NoCode.Application.csproj"/>
-        <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj"/>
-        <ProjectReference Include="..\NoCodeConstructor.Application.Nodes\NoCodeConstructor.Application.Nodes.csproj"/>
-        <ProjectReference Include="..\NoCodeConstructor.Persistense\NoCodeConstructor.Persistense.csproj"/>
+        <ProjectReference Include="..\Application\Application.csproj" />
+        <ProjectReference Include="..\Application.CodeActivator\Application.CodeActivator.csproj" />
+        <ProjectReference Include="..\Application.Nodes\Application.Nodes.csproj" />
+        <ProjectReference Include="..\Persistense\Persistense.csproj" />
     </ItemGroup>
 
 </Project>

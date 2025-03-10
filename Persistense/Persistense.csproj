@@ -4,6 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>NoCodeConstructor.Persistense</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,8 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\NoCode.Application\NoCode.Application.csproj"/>
-        <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj"/>
+        <ProjectReference Include="..\Application\Application.csproj" />
+        <ProjectReference Include="..\Application.CodeActivator\Application.CodeActivator.csproj" />
     </ItemGroup>
 
     <ItemGroup>

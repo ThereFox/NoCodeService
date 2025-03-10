@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Application.Nodes", "NoCodeConstructor.Application.Nodes\NoCodeConstructor.Application.Nodes.csproj", "{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Nodes", "Application.Nodes\Application.Nodes.csproj", "{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Persistense", "NoCodeConstructor.Persistense\NoCodeConstructor.Persistense.csproj", "{83FB54FC-1E5B-4157-AE3B-F8D54490840F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistense", "Persistense\Persistense.csproj", "{83FB54FC-1E5B-4157-AE3B-F8D54490840F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{27B8F8D5-4D8B-4DC5-8C1D-31417BA2B21B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCode.Application", "NoCode.Application\NoCode.Application.csproj", "{D2A36195-A48A-4E74-B608-D49DFF0A7F88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{D2A36195-A48A-4E74-B608-D49DFF0A7F88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Application.CodeActivator", "NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj", "{14DD6A90-0A38-40F7-9FD5-031A61310398}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.CodeActivator", "Application.CodeActivator\Application.CodeActivator.csproj", "{14DD6A90-0A38-40F7-9FD5-031A61310398}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{53527D81-6430-4528-BE34-5AF7C7312FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCodeConstructor.Domain", "NoCodeConstructor.Domain\NoCodeConstructor.Domain.csproj", "{42B8FED6-3952-464B-AA76-96E5D9A84C1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{42B8FED6-3952-464B-AA76-96E5D9A84C1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
