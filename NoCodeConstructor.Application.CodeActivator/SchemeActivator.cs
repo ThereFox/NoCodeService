@@ -15,7 +15,7 @@ public class SchemeActivator : ISchemeActivator
     {
         _factory = factory;
     }
-    
+
     public Result<CodeScheme> Activate(List<NodeConfigInputObject> nodes)
     {
         var unknowedNodes = nodes.Select(ex => ex.Id).ToHashSet();
@@ -23,7 +23,7 @@ public class SchemeActivator : ISchemeActivator
         foreach (var node in nodes)
         {
             node.ConnectedElements
-                .ForEach(ex=> unknowedNodes.RemoveWhere(id => id == ex));
+                .ForEach(ex => unknowedNodes.RemoveWhere(id => id == ex));
         }
 
         var inputs = nodes.Where(ex => unknowedNodes.Contains(ex.Id))
@@ -46,23 +46,28 @@ public class SchemeActivator : ISchemeActivator
             if (
                 activatedInputNodes.Any(
                     ex => ex.IsFailure
-                    )
+                )
                 ||
                 activatedActionNodes.Any(
                     ex => ex.IsFailure
-                    )
                 )
+            )
             {
-                var invalidOfInputs = activatedInputNodes.Any(ex => ex.IsFailure) ? activatedInputNodes.Where(ex => ex.IsFailure)
-                    .Select(ex => ex.Error)
-                    .Aggregate((first, second) => $"{first}, {second}") : "";
-                var invalidOfActions = activatedActionNodes.Any(ex => ex.IsFailure) ?  activatedActionNodes.Where(ex => ex.IsFailure)
-                    .Select(ex => ex.Error)
-                    .Aggregate((first, second) => $"{first}, {second}") : "";
+                var invalidOfInputs = activatedInputNodes.Any(ex => ex.IsFailure)
+                    ? activatedInputNodes.Where(ex => ex.IsFailure)
+                        .Select(ex => ex.Error)
+                        .Aggregate((first, second) => $"{first}, {second}")
+                    : "";
+                var invalidOfActions = activatedActionNodes.Any(ex => ex.IsFailure)
+                    ? activatedActionNodes.Where(ex => ex.IsFailure)
+                        .Select(ex => ex.Error)
+                        .Aggregate((first, second) => $"{first}, {second}")
+                    : "";
 
-                return Result.Failure<CodeScheme>($"not able to construct all nodes. {invalidOfInputs} {invalidOfActions}");
+                return Result.Failure<CodeScheme>(
+                    $"not able to construct all nodes. {invalidOfInputs} {invalidOfActions}");
             }
-            
+
             var inputNodes = activatedInputNodes
                 .Select(ex => ex.Value)
                 .ToList();
@@ -70,10 +75,8 @@ public class SchemeActivator : ISchemeActivator
             var actionNodes = activatedActionNodes
                 .Select(ex => ex.Value)
                 .ToList();
-            
+
             return Result.Success(new CodeScheme(actionNodes, inputNodes));
         }
-        
-
     }
 }

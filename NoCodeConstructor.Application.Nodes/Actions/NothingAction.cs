@@ -12,7 +12,7 @@ public class NothingAction : INodeAction
     {
         Console.WriteLine(config.Value);
     }
-    
+
     public async Task<Result> Handle(ExecutionContext context)
     {
         Console.WriteLine("test");
@@ -20,6 +20,5 @@ public class NothingAction : INodeAction
         await Task.CompletedTask;
 
         return Result.Success();
-
     }
 }

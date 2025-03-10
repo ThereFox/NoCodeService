@@ -8,7 +8,7 @@ public class PipelineNode : Entity<int>
     private readonly INodeAction _action;
 
     public readonly Pipe OutputPipe;
-    
+
     private bool IsAlreadyExecuted = false;
 
     public async Task<Result> Execute(ExecutionContext context)
@@ -17,10 +17,10 @@ public class PipelineNode : Entity<int>
         {
             return Result.Failure("task already executed");
         }
-        
+
         return await _action.Handle(context);
     }
-    
+
     private PipelineNode(int id, INodeAction action, Pipe outputPipe)
     {
         Id = id;
@@ -34,8 +34,7 @@ public class PipelineNode : Entity<int>
         {
             return Result.Failure<PipelineNode>("Action code cannot be null");
         }
-        
+
         return Result.Success(new PipelineNode(id, action, outputPipe));
     }
-    
 }

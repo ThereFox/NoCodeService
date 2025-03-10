@@ -10,6 +10,7 @@ public class TestScheme
 {
     private readonly ISchemeActivator _activator;
     private readonly ISchemeStore _store;
+
     public TestScheme(ISchemeActivator activator, ISchemeStore store)
     {
         _activator = activator;
@@ -24,10 +25,9 @@ public class TestScheme
         {
             return node.ConvertFailure();
         }
-        
+
         var result = await node.Value.HandleEvent(new EventInfo());
 
         return result;
     }
-    
 }

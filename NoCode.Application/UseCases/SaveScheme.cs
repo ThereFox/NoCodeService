@@ -23,7 +23,7 @@ public class SaveScheme
         {
             return Result.Failure(schemeValidate.Error);
         }
-        
+
         return await _schemeStore.SaveNewRaw(id, nodes);
     }
 }

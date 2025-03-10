@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Agregates\" />
+        <Folder Include="Agregates\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSharpFunctionalExtensions" Version="3.5.1" />
+        <PackageReference Include="CSharpFunctionalExtensions" Version="3.5.1"/>
     </ItemGroup>
 
 </Project>

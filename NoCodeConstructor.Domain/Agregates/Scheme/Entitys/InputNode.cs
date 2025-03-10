@@ -7,7 +7,7 @@ public class InputNode : Entity<int>
 {
     private readonly IInputTrigger _trigger;
     public Pipe OutputPipe { get; }
-    
+
     private InputNode(int id, Pipe outpute, IInputTrigger trigger) : base(id)
     {
         Id = id;
@@ -24,5 +24,4 @@ public class InputNode : Entity<int>
     {
         return Result.Success(new InputNode(id, outpipe, trigger));
     }
-    
 }

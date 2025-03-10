@@ -14,14 +14,14 @@ namespace NodeBuilder;
 public class NodeActivator
 {
     private readonly Dictionary<int, NodeActivationConfig> _types = new Dictionary<int, NodeActivationConfig>();
-    
+
     private readonly IServiceProvider _serviceProvider;
 
     public NodeActivator(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
-    
+
     public void AppendNewAvaliableNode(List<Type> nodeTypes)
     {
         foreach (var checkingType in nodeTypes)
@@ -30,10 +30,11 @@ public class NodeActivator
                 checkingType.GetInterfaces().Contains(typeof(INodeAction)) == false
                 &&
                 checkingType.GetInterfaces().Contains(typeof(IInputTrigger)) == false
-                )
+            )
             {
                 continue;
             }
+
             var publicCtors = checkingType
                 .GetConstructors();
 
@@ -49,7 +50,7 @@ public class NodeActivator
             {
                 throw new InvalidCastException($"invalid ctor declaration in type {checkingType.FullName}");
             }
-            
+
             var typeId = checkingType.GetCustomAttribute<ActionCodeAttribute>().Id;
 
             if (_types.ContainsKey(typeId))
@@ -68,7 +69,6 @@ public class NodeActivator
                 _types.Add(typeId, new NodeActivationConfig(null, checkingType));
             }
         }
-        
     }
 
     public Result<PipelineNode> ActivateNode(NodeConfigInputObject config)
@@ -96,15 +96,15 @@ public class NodeActivator
                 {
                     return createObjectResult.ConvertFailure<PipelineNode>();
                 }
-                
+
                 action = (INodeAction)createObjectResult.Value;
             }
-            
-            
+
+
             var pipe = new Pipe([config.Id], config.ConnectedElements);
-            
+
             var node = PipelineNode.Create(config.Id, action, pipe);
-            
+
             return node;
         }
         catch (Exception e)
@@ -112,7 +112,7 @@ public class NodeActivator
             return Result.Failure<PipelineNode>(e.Message);
         }
     }
-    
+
     public Result<InputNode> ActivateInputNode(NodeConfigInputObject config)
     {
         try
@@ -138,7 +138,7 @@ public class NodeActivator
                 {
                     return createObjectResult.ConvertFailure<InputNode>();
                 }
-                
+
                 trigger = (IInputTrigger)createObjectResult.Value;
             }
 
@@ -148,11 +148,11 @@ public class NodeActivator
                 .DistinctBy(ex => ex)
                 .Where(ex => ex != config.Id)
                 .ToList();
-            
+
             var pipe = new Pipe([config.Id], clearedConnectedElements);
 
             var node = InputNode.Create(config.Id, trigger, pipe);
-            
+
             return node;
         }
         catch (Exception e)
@@ -174,10 +174,10 @@ public class NodeActivator
             .CreateInstance(
                 _serviceProvider,
                 config.NodeType,
-                new Object[] {configParse.Value}
+                new Object[] { configParse.Value }
             );
     }
-    
+
     private object createObjectWithoutConfig(NodeActivationConfig config)
     {
         return ActivatorUtilities

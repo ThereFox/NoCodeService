@@ -10,10 +10,10 @@ namespace NoCodeConstructor.Persistense.Stores;
 public class SchemeStore : ISchemeStore
 {
     private const string defaultCollectionName = "delete_me";
-    
+
     private readonly IMongoDatabase _client;
     private readonly ISchemeActivator _schemeActivator;
-    
+
     public SchemeStore(IMongoDatabase client, ISchemeActivator activator)
     {
         _client = client;
@@ -39,18 +39,14 @@ public class SchemeStore : ISchemeStore
         {
             return Result.Failure<CodeScheme>(codeActivateResult.Error);
         }
-        
+
         return Result.Success(codeActivateResult.Value);
-        
     }
 
     public async Task<Result> SaveNew(Guid id, CodeScheme scheme)
     {
         var nodes = scheme.Nodes
-            .Select(ex =>
-            {
-                return new NodeConfigInputObject(ex.Id, 12, ex.OutputPipe.Outputs, "");
-            })
+            .Select(ex => { return new NodeConfigInputObject(ex.Id, 12, ex.OutputPipe.Outputs, ""); })
             .ToList();
 
         var schemeDTO = new SchemeDTO()

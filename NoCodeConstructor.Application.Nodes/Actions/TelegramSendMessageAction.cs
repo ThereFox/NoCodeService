@@ -11,7 +11,7 @@ public class TelegramSendMessageAction : INodeAction
 {
     private readonly HttpClient _client;
     private readonly TelegramConfig _telegramConfig;
-    
+
     public TelegramSendMessageAction(HttpClient client, TelegramConfig config)
     {
         _client = client;
@@ -23,18 +23,18 @@ public class TelegramSendMessageAction : INodeAction
         var request = new HttpRequestMessage(
             HttpMethod.Post,
             $"https://api.telegram.org/bot{_telegramConfig.BotToken}/sendMessage"
-            );
+        );
 
         request.Content = JsonContent.Create(
-                new
-                {
-                    text = _telegramConfig.Content,
-                    parse_mode = "MarkdownV2",
-                    chat_id = _telegramConfig.ChatId
-                }
+            new
+            {
+                text = _telegramConfig.Content,
+                parse_mode = "MarkdownV2",
+                chat_id = _telegramConfig.ChatId
+            }
         );
         var response = await _client.SendAsync(request);
-        
+
         return Result.Success();
     }
 }

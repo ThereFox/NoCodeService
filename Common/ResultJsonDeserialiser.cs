@@ -16,6 +16,7 @@ public static class ResultJsonDeserialiser
             {
                 return Result.Failure<T>("Could not deserialise");
             }
+
             return result;
         }
         catch (Exception e)
@@ -23,6 +24,7 @@ public static class ResultJsonDeserialiser
             return Result.Failure<T>(e.Message);
         }
     }
+
     public static Result<object> Deserialise(Type type, string json)
     {
         try
@@ -35,12 +37,13 @@ public static class ResultJsonDeserialiser
                     IncludeFields = true,
                     DefaultIgnoreCondition = JsonIgnoreCondition.Never
                 }
-                );
+            );
 
             if (result == null)
             {
                 return Result.Failure<object>("Could not deserialise");
             }
+
             return result;
         }
         catch (Exception e)

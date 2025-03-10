@@ -12,7 +12,7 @@ public class Pipe : ValueObject
         Inputs = inputs;
         Outputs = outputs;
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Inputs;

@@ -13,22 +13,21 @@ namespace WebAPI.Controllers;
 [Route("/")]
 public class CodeController : Controller
 {
-
     private readonly TestScheme _test;
     private readonly ExecuteSavedScheme _executeSavedScheme;
     private readonly SaveScheme _saveScheme;
-    
+
     public CodeController(TestScheme test, ExecuteSavedScheme executeSavedScheme, SaveScheme saveScheme)
     {
         _test = test;
         _executeSavedScheme = executeSavedScheme;
         _saveScheme = saveScheme;
     }
-    
-    
+
+
     [HttpPost]
     [Route("/{id}")]
-    public async Task<IActionResult> SaveNew([FromRoute]Guid id, [FromBody] CodeScheme codeScheme)
+    public async Task<IActionResult> SaveNew([FromRoute] Guid id, [FromBody] CodeScheme codeScheme)
     {
         var nodes = codeScheme.Nodes.Select(ex =>
             new NodeConfigInputObject(ex.Id, ex.TypeId, ex.ConnectedElements, ex.Configuration.ToString())).ToList();
@@ -39,10 +38,10 @@ public class CodeController : Controller
         {
             return BadRequest(handleResult.Error);
         }
-        
+
         return Ok("213");
     }
-    
+
     [HttpPost]
     [Route("/test")]
     public async Task<IActionResult> Test([FromBody] CodeScheme codeScheme)
@@ -56,10 +55,10 @@ public class CodeController : Controller
         {
             return BadRequest(handleResult.Error);
         }
-        
+
         return Ok("213");
     }
-    
+
     [HttpGet]
     [Route("/{id}")]
     public async Task<IActionResult> RunById([FromRoute] Guid id)
@@ -70,7 +69,7 @@ public class CodeController : Controller
         {
             return BadRequest(runResult.Error);
         }
-        
+
         return Ok("213");
     }
 }

@@ -8,18 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSharpFunctionalExtensions" Version="3.5.1" />
+        <PackageReference Include="CSharpFunctionalExtensions" Version="3.5.1"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj" />
-      <ProjectReference Include="..\NoCodeConstructor.Domain\NoCodeConstructor.Domain.csproj" />
+        <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj"/>
+        <ProjectReference Include="..\NoCodeConstructor.Domain\NoCodeConstructor.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-        <HintPath>..\..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\8.0.10\ref\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      </Reference>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+            <HintPath>..\..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\8.0.10\ref\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

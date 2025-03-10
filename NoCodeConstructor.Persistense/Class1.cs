@@ -10,10 +10,10 @@ public static class DIRegister
     public static IServiceCollection AddPersistence(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IMongoClient>(
-            ex => 
+            ex =>
                 new MongoClient(
                     "mongodb://root:example@localhost:27017/")
-            );
+        );
         serviceCollection.AddScoped<IMongoDatabase>(ex =>
         {
             var client = ex.GetRequiredService<IMongoClient>();
@@ -21,7 +21,7 @@ public static class DIRegister
         });
 
         serviceCollection.AddScoped<ISchemeStore, SchemeStore>();
-        
+
         return serviceCollection;
     }
 }

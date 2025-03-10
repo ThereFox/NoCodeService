@@ -6,13 +6,12 @@ namespace NoCodeConstructor.Domain.Scheme.Realisations.Scheme;
 
 public class CodeScheme : Entity
 {
-
     private List<PipelineNode> _nodes;
     private List<InputNode> _inputs;
 
     public IReadOnlyCollection<PipelineNode> Nodes => _nodes;
     public IReadOnlyCollection<InputNode> Inputs => _inputs;
-    
+
     private readonly HashSet<PipelineNode> _visitedNodes = new();
     private readonly Queue<PipelineNode> _executionQueue = new();
 
@@ -21,7 +20,7 @@ public class CodeScheme : Entity
         _nodes = nodes;
         _inputs = inputs;
     }
-    
+
     public async Task<Result> HandleEvent(EventInfo iniciator)
     {
         var triggeredNodes = _inputs.Select(ex => ex.IsTriggering(iniciator))
@@ -37,7 +36,7 @@ public class CodeScheme : Entity
         foreach (var node in triggeredNodes)
         {
             var connectedNodes = node.OutputPipe.Outputs;
-            
+
             _nodes.Where(ex => connectedNodes.Contains(ex.Id))
                 .ToList()
                 .ForEach(ex => _executionQueue.Enqueue(ex));
@@ -61,13 +60,12 @@ public class CodeScheme : Entity
             }
 
             AppendNewElementsToExecuteQueue(current.OutputPipe);
-            
+
             _visitedNodes.Add(current);
         }
-        
-        
-         return Result.Failure("not realised");
 
+
+        return Result.Failure("not realised");
     }
 
     private void AppendNewElementsToExecuteQueue(Pipe outputPipe)
@@ -76,5 +74,4 @@ public class CodeScheme : Entity
             .ToList()
             .ForEach(ex => _executionQueue.Enqueue(ex));
     }
-    
 }

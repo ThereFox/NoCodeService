@@ -11,9 +11,8 @@ public class AllwaysTrigger : IInputTrigger
 {
     public AllwaysTrigger(TestConfig config)
     {
-        
     }
-    
+
     public Result<bool> IsTriggered(EventInfo eventInfo)
     {
         return Result.Success(true);

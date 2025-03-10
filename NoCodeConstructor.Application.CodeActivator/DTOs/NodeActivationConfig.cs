@@ -1,7 +1,6 @@
 namespace NodeBuilder.DTOs;
 
-public record NodeActivationConfig
-(
+public record NodeActivationConfig(
     Type configurationType,
     Type NodeType
 );

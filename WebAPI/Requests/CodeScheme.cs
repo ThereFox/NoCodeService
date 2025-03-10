@@ -4,6 +4,5 @@ namespace WebAPI.Requests;
 
 public class CodeScheme
 {
-    [JsonRequired]
-    public List<CodeNode> Nodes { get; init; }
+    [JsonRequired] public List<CodeNode> Nodes { get; init; }
 }
