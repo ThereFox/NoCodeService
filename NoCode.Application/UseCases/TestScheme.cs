@@ -9,13 +9,14 @@ namespace NoCode.Application.UseCases;
 public class TestScheme
 {
     private readonly ISchemeActivator _activator;
-    
-    public TestScheme(ISchemeActivator activator)
+    private readonly ISchemeStore _store;
+    public TestScheme(ISchemeActivator activator, ISchemeStore store)
     {
         _activator = activator;
+        _store = store;
     }
 
-    public async Task<Result> HandleNode(List<NodeConfigInputObject> config)
+    public async Task<Result> TryRun(List<NodeConfigInputObject> config)
     {
         var node = _activator.Activate(config);
 
@@ -23,10 +24,8 @@ public class TestScheme
         {
             return node.ConvertFailure();
         }
-
+        
         var result = await node.Value.HandleEvent(new EventInfo());
-
-        Console.WriteLine(result);
 
         return result;
     }

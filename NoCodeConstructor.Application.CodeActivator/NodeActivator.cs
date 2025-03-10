@@ -141,9 +141,15 @@ public class NodeActivator
                 
                 trigger = (IInputTrigger)createObjectResult.Value;
             }
-            
 
-            var pipe = new Pipe([config.Id], config.ConnectedElements);
+
+            var clearedConnectedElements = config
+                .ConnectedElements
+                .DistinctBy(ex => ex)
+                .Where(ex => ex != config.Id)
+                .ToList();
+            
+            var pipe = new Pipe([config.Id], clearedConnectedElements);
 
             var node = InputNode.Create(config.Id, trigger, pipe);
             

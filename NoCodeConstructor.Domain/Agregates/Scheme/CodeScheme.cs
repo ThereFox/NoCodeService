@@ -10,6 +10,9 @@ public class CodeScheme : Entity
     private List<PipelineNode> _nodes;
     private List<InputNode> _inputs;
 
+    public IReadOnlyCollection<PipelineNode> Nodes => _nodes;
+    public IReadOnlyCollection<InputNode> Inputs => _inputs;
+    
     private readonly HashSet<PipelineNode> _visitedNodes = new();
     private readonly Queue<PipelineNode> _executionQueue = new();
 

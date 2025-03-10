@@ -17,6 +17,7 @@
       <ProjectReference Include="..\NoCode.Application\NoCode.Application.csproj" />
       <ProjectReference Include="..\NoCodeConstructor.Application.CodeActivator\NoCodeConstructor.Application.CodeActivator.csproj" />
       <ProjectReference Include="..\NoCodeConstructor.Application.Nodes\NoCodeConstructor.Application.Nodes.csproj" />
+      <ProjectReference Include="..\NoCodeConstructor.Persistense\NoCodeConstructor.Persistense.csproj" />
     </ItemGroup>
 
 </Project>
