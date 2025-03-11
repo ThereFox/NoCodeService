@@ -24,7 +24,9 @@ public class CodeScheme : Entity<Guid>
 
     public async Task<Result> HandleEvent(EventInfo iniciator)
     {
-        var triggeredNodes = _inputs.Select(ex => ex.IsTriggering(iniciator))
+        var executionContext = new GlobalContext();
+        
+        var triggeredNodes = _inputs.Select(ex => ex.IsTriggering(iniciator, executionContext))
             .Select((ex, index) => ex.IsSuccess && ex.Value ? index : -1)
             .Where(ex => ex != -1)
             .Select(ex => _inputs[ex]);
@@ -52,7 +54,7 @@ public class CodeScheme : Entity<Guid>
                 continue;
             }
 
-            var executeResult = await current.Execute(null);
+            var executeResult = await current.Execute(executionContext.GetSubContext(current.Id));
 
             if (executeResult.IsFailure)
             {

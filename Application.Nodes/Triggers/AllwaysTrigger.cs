@@ -13,7 +13,7 @@ public class AllwaysTrigger : IInputTrigger
     {
     }
 
-    public Result<bool> IsTriggered(EventInfo eventInfo)
+    public Result<bool> IsTriggered(EventInfo eventInfo, IExecutionContext context)
     {
         return Result.Success(true);
     }

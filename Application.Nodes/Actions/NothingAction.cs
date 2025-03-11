@@ -13,10 +13,8 @@ public class NothingAction : INodeAction
         Console.WriteLine(config.Value);
     }
 
-    public async Task<Result> Handle(ExecutionContext context)
+    public async Task<Result> Handle(IExecutionContext context)
     {
-        Console.WriteLine("test");
-
         await Task.CompletedTask;
 
         return Result.Success();

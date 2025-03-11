@@ -18,19 +18,21 @@ public class TelegramSendMessageAction : INodeAction
         _telegramConfig = config;
     }
 
-    public async Task<Result> Handle(ExecutionContext context)
+    public async Task<Result> Handle(IExecutionContext context)
     {
         var request = new HttpRequestMessage(
             HttpMethod.Post,
             $"https://api.telegram.org/bot{_telegramConfig.BotToken}/sendMessage"
         );
 
+        var chatId = _telegramConfig.ChatId.StartsWith("${") ? context.GetValue(_telegramConfig.ChatId) : _telegramConfig.ChatId;
+        
         request.Content = JsonContent.Create(
             new
             {
                 text = _telegramConfig.Content,
                 parse_mode = "MarkdownV2",
-                chat_id = _telegramConfig.ChatId
+                chat_id = chatId
             }
         );
         var response = await _client.SendAsync(request);

@@ -11,7 +11,7 @@ public class PipelineNode : Entity<int>
 
     private bool IsAlreadyExecuted = false;
 
-    public async Task<Result> Execute(ExecutionContext context)
+    public async Task<Result> Execute(IExecutionContext context)
     {
         if (IsAlreadyExecuted)
         {

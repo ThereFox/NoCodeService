@@ -11,7 +11,7 @@ public class TelegramConfig
 
     [JsonRequired]
     [JsonPropertyName("chat_id")]
-    public int ChatId { get; set; }
+    public string ChatId { get; set; }
 
     [JsonRequired]
     [JsonPropertyName("content")]
