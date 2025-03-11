@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using NoCode.Application.Interfaces;
+using NodeBuilder.Validator;
 
 namespace NodeBuilder;
 
@@ -11,6 +12,7 @@ public static class DI
         serviceCollection.AddScoped<ISchemeActivator, SchemeActivator>();
         return serviceCollection;
     }
+    
 
     public static IServiceProvider AddNodeType<T>(this IServiceProvider serviceProvider)
     {
