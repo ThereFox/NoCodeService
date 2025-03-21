@@ -7,12 +7,13 @@ namespace NoCodeConstructor.Persistense;
 
 public static class DIRegister
 {
-    public static IServiceCollection AddPersistence(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddMongoDBPipelineStore(this IServiceCollection serviceCollection, string connectionString)
     {
         serviceCollection.AddScoped<IMongoClient>(
             ex =>
                 new MongoClient(
-                    "mongodb://root:example@localhost:27017/")
+                    connectionString//"mongodb://root:example@localhost:27017/"
+                    )
         );
         serviceCollection.AddScoped<IMongoDatabase>(ex =>
         {

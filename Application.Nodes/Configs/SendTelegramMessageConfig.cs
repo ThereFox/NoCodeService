@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NoCodeConstructor.Domain.Configs;
 
-public class TelegramConfig
+public class SendTelegramMessageConfig
 {
     [JsonRequired]
     [JsonPropertyName("token")]

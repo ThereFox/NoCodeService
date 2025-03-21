@@ -2,13 +2,13 @@ using NoCodeConstructor.Domain.Abstactions;
 
 namespace NoCodeConstructor.Domain.Engine;
 
-public class LocalExecutionContext : IExecutionContext
+public class LocalVariableContext : IVariableContext
 {
     private int _contextNodeId;
 
-    private IExecutionContext _globalContext;
+    private IVariableContext _globalContext;
     
-    public LocalExecutionContext(int id, IExecutionContext context)
+    public LocalVariableContext(int id, IVariableContext context)
     {
         _contextNodeId = id;
         _globalContext = context;
@@ -30,7 +30,7 @@ public class LocalExecutionContext : IExecutionContext
         return _globalContext.GetValue($"{_contextNodeId}./.{key}");
     }
 
-    public IExecutionContext GetSubContext(int id)
+    public IVariableContext GetSubContext(int id)
     {
         throw new NotImplementedException();
     }

@@ -15,15 +15,18 @@ public class NodeActivator
 {
     private readonly Dictionary<int, NodeActivationConfig> _types = new Dictionary<int, NodeActivationConfig>();
 
+    private readonly IServiceScopeFactory _scopeFactory;
     private readonly IServiceProvider _serviceProvider;
 
-    public NodeActivator(IServiceProvider serviceProvider)
+    public NodeActivator(IServiceScopeFactory scopeFactory)
     {
-        _serviceProvider = serviceProvider;
+        _scopeFactory = scopeFactory;
+        _serviceProvider = _scopeFactory.CreateScope().ServiceProvider;
     }
 
     public void AppendNewAvaliableNode(List<Type> nodeTypes)
     {
+        
         foreach (var checkingType in nodeTypes)
         {
             if (
