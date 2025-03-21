@@ -2,11 +2,11 @@ using NoCodeConstructor.Domain.Abstactions;
 
 namespace NoCodeConstructor.Domain.Engine;
 
-public class GlobalContext : IExecutionContext
+public class GlobalVariableContext : IVariableContext
 {
     private readonly Dictionary<string, string> _localVariables = new Dictionary<string, string>();
 
-    public GlobalContext()
+    public GlobalVariableContext()
     {
         
     }
@@ -20,8 +20,8 @@ public class GlobalContext : IExecutionContext
     {
         return _localVariables.TryGetValue(key, out var value) ? value : null;  
     }
-    public IExecutionContext GetSubContext(int id)
+    public IVariableContext GetSubContext(int id)
     {
-        return new LocalExecutionContext(id, this);
+        return new LocalVariableContext(id, this);
     }
 }

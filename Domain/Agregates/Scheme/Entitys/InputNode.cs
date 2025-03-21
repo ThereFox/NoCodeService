@@ -15,9 +15,9 @@ public class InputNode : Entity<int>
         OutputPipe = outpute;
     }
 
-    public Result<bool> IsTriggering(EventInfo eventInfo, IExecutionContext executionContext)
+    public Result<bool> IsTriggering(EventInfo eventInfo, IVariableContext variableContext)
     {
-        return _trigger.IsTriggered(eventInfo, executionContext);
+        return _trigger.IsTriggered(eventInfo, variableContext);
     }
 
     public static Result<InputNode> Create(int id, IInputTrigger trigger, Pipe outpipe)

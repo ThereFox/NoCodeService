@@ -1,6 +1,7 @@
 using CSharpFunctionalExtensions;
 using NoCodeConstructor.Domain.Engine;
 using NoCodeConstructor.Domain.Scheme.Realisations.Scheme.Entitys;
+using ExecutionContext = NoCodeConstructor.Domain.DTOs.ExecutionContext;
 
 namespace NoCodeConstructor.Domain.Scheme.Realisations.Scheme;
 
@@ -24,9 +25,10 @@ public class CodeScheme : Entity<Guid>
 
     public async Task<Result> HandleEvent(EventInfo iniciator)
     {
-        var executionContext = new GlobalContext();
+        var variableContext = new GlobalVariableContext();
+     
         
-        var triggeredNodes = _inputs.Select(ex => ex.IsTriggering(iniciator, executionContext))
+        var triggeredNodes = _inputs.Select(ex => ex.IsTriggering(iniciator, variableContext))
             .Select((ex, index) => ex.IsSuccess && ex.Value ? index : -1)
             .Where(ex => ex != -1)
             .Select(ex => _inputs[ex]);
@@ -54,7 +56,7 @@ public class CodeScheme : Entity<Guid>
                 continue;
             }
 
-            var executeResult = await current.Execute(executionContext.GetSubContext(current.Id));
+            var executeResult = await current.Execute(variableContext.GetSubContext(current.Id));
 
             if (executeResult.IsFailure)
             {

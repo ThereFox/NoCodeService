@@ -3,6 +3,7 @@ using CSharpFunctionalExtensions;
 using NoCodeConstructor.Domain.Abstactions;
 using NoCodeConstructor.Domain.Configs;
 using NodeBuilder.Attributes;
+using ExecutionContext = NoCodeConstructor.Domain.DTOs.ExecutionContext;
 
 namespace NoCodeConstructor.Domain.Actions;
 
@@ -10,29 +11,28 @@ namespace NoCodeConstructor.Domain.Actions;
 public class TelegramSendMessageAction : INodeAction
 {
     private readonly HttpClient _client;
-    private readonly TelegramConfig _telegramConfig;
+    private readonly SendTelegramMessageConfig _sendTelegramMessageConfig;
 
-    public TelegramSendMessageAction(HttpClient client, TelegramConfig config)
+    public TelegramSendMessageAction(HttpClient client, SendTelegramMessageConfig messageConfig)
     {
         _client = client;
-        _telegramConfig = config;
+        _sendTelegramMessageConfig = messageConfig;
     }
 
-    public async Task<Result> Handle(IExecutionContext context)
+    public async Task<Result> Handle(ExecutionContext context)
     {
+        var filledConfig = context.Configuration.GetConfiguration(_sendTelegramMessageConfig);
+        
         var request = new HttpRequestMessage(
             HttpMethod.Post,
-            $"https://api.telegram.org/bot{_telegramConfig.BotToken}/sendMessage"
+            $"https://api.telegram.org/bot{filledConfig.BotToken}/sendMessage"
         );
-
-        var chatId = _telegramConfig.ChatId.StartsWith("${") ? context.GetValue(_telegramConfig.ChatId) : _telegramConfig.ChatId;
-        
         request.Content = JsonContent.Create(
             new
             {
-                text = _telegramConfig.Content,
+                text = filledConfig.Content,
                 parse_mode = "MarkdownV2",
-                chat_id = chatId
+                chat_id = filledConfig.ChatId
             }
         );
         var response = await _client.SendAsync(request);

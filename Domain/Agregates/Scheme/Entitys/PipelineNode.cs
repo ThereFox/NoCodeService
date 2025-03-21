@@ -1,24 +1,29 @@
 using CSharpFunctionalExtensions;
 using NoCodeConstructor.Domain.Abstactions;
+using NoCodeConstructor.Domain.DTOs.ConfigurationContext;
+using ExecutionContext = NoCodeConstructor.Domain.DTOs.ExecutionContext;
 
 namespace NoCodeConstructor.Domain.Scheme.Realisations.Scheme.Entitys;
 
 public class PipelineNode : Entity<int>
 {
+    
     private readonly INodeAction _action;
 
     public readonly Pipe OutputPipe;
 
     private bool IsAlreadyExecuted = false;
 
-    public async Task<Result> Execute(IExecutionContext context)
+    public async Task<Result> Execute(IVariableContext context)
     {
         if (IsAlreadyExecuted)
         {
             return Result.Failure("task already executed");
         }
 
-        return await _action.Handle(context);
+        var executionContext = new ExecutionContext(context, OutputPipe);
+        
+        return await _action.Handle(executionContext);
     }
 
     private PipelineNode(int id, INodeAction action, Pipe outputPipe)

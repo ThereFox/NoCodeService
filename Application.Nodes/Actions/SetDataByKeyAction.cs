@@ -7,27 +7,28 @@ using ExecutionContext = NoCodeConstructor.Domain.DTOs.ExecutionContext;
 
 namespace NoCodeConstructor.Domain.Actions;
 
-[ActionCode(11)]
-public class GetDataByKeyAction : INodeAction
+[ActionCode(12)]
+public class SetDataByKeyAction : INodeAction
 {
-    private readonly GetDataByKeyConfig _config;
+    private readonly SetDataByKeyConfig _config; 
     private readonly IKeyValueStore _keyValueStore;
     
     
-    public GetDataByKeyAction(GetDataByKeyConfig keyConfig, IKeyValueStore store)
+    public SetDataByKeyAction(SetDataByKeyConfig keyConfig, IKeyValueStore store)
     {
         _config = keyConfig;
         _keyValueStore = store;
     }
     public async Task<Result> Handle(ExecutionContext context)
     {
-        var dataByKey = await _keyValueStore.GetValue(_config.Key);
+        var actualConfig = context.Configuration.GetConfiguration(_config);
+        
+        var dataByKey = await _keyValueStore.SetValue(actualConfig.Key, actualConfig.Value);
+        
         if (dataByKey.IsFailure)
         {
             return dataByKey;
         }
-        
-        context.VariableContext.SaveValue(_config.Name, dataByKey.Value);
 
         return Result.Success();
     }

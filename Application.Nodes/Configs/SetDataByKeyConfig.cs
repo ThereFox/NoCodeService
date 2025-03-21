@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NoCodeConstructor.Domain.Configs;
 
-public class GetDataByKeyConfig
+public class SetDataByKeyConfig
 {
     [Required]
     [JsonPropertyName("key")]
@@ -11,5 +11,5 @@ public class GetDataByKeyConfig
     
     [Required]
     [JsonPropertyName("returnName")]
-    public string Name { get; set; }
+    public string Value { get; set; }
 }
