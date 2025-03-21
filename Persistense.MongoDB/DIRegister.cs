@@ -12,7 +12,7 @@ public static class DIRegister
         serviceCollection.AddScoped<IMongoClient>(
             ex =>
                 new MongoClient(
-                    connectionString//"mongodb://root:example@localhost:27017/"
+                    connectionString
                     )
         );
         serviceCollection.AddScoped<IMongoDatabase>(ex =>

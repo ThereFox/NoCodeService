@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Nodes", "Application.Nodes\Application.Nodes.csproj", "{EB5C425D-B6E8-4C38-88AF-5C30E8B23962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistense", "Persistense\Persistense.csproj", "{83FB54FC-1E5B-4157-AE3B-F8D54490840F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistense.MongoDB", "Persistense.MongoDB\Persistense.MongoDB.csproj", "{83FB54FC-1E5B-4157-AE3B-F8D54490840F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{27B8F8D5-4D8B-4DC5-8C1D-31417BA2B21B}"
 EndProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{53527D81-6430-4528-BE34-5AF7C7312FFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{42B8FED6-3952-464B-AA76-96E5D9A84C1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistense.EFCore", "Persistense.EFCore\Persistense.EFCore.csproj", "{E549E6F0-44AF-4313-8CC1-4154AAFC85C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +50,9 @@ Global
 		{42B8FED6-3952-464B-AA76-96E5D9A84C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42B8FED6-3952-464B-AA76-96E5D9A84C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42B8FED6-3952-464B-AA76-96E5D9A84C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E549E6F0-44AF-4313-8CC1-4154AAFC85C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E549E6F0-44AF-4313-8CC1-4154AAFC85C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E549E6F0-44AF-4313-8CC1-4154AAFC85C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E549E6F0-44AF-4313-8CC1-4154AAFC85C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
