@@ -17,6 +17,8 @@ var servicesConfiguration = builder
 
 builder.Services.AddHttpClient();
 
+builder.Services.AddMemoryCache();
+
 builder.Services
     .AddNodeRegistration()
     .AddApplication()
